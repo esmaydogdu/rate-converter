@@ -1,4 +1,4 @@
-type Response = {
+export type Response = {
   success: boolean;
   timestamp: number;
   base: string;
@@ -6,11 +6,11 @@ type Response = {
   rates: Rates;
 };
 
-type Rates = {
+export type Rates = {
   [key: string]: number;
 };
 
-type State = {
+export type State = {
   amountFrom: number;
   amountTo: number;
   rateFrom: string;

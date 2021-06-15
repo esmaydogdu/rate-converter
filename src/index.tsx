@@ -1,8 +1,15 @@
+/* istanbul ignore file */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// Mock api responses are working on local.
+if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
 
 ReactDOM.render(
   <React.StrictMode>
