@@ -4,8 +4,19 @@ import {
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
+import { Rates } from "../utils/conversion";
 
-export const CurrencyRow = (props: any) => {
+export type RowType = {
+  testidPrefix: string;
+  amount: number;
+  handleAmountChange: any;
+  handleRateClick: any;
+  distinctRate: string;
+  rate: string;
+  rates: Rates;
+};
+
+export const CurrencyRow = (props: RowType) => {
   return (
     <InputGroup
       className="p-2"
@@ -16,7 +27,7 @@ export const CurrencyRow = (props: any) => {
         data-testid={`${props.testidPrefix}-currency-row-input`}
         value={props.amount}
         type="number"
-        min='0'
+        min="0"
         onChange={props.handleAmountChange}
       />
       <DropdownButton

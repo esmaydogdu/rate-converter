@@ -1,12 +1,11 @@
 import {
   fireEvent,
-  queryByText,
   render,
   screen,
   waitFor,
-  waitForElementToBeRemoved,
 } from "@testing-library/react";
 import { CurrencyRow } from "./CurrencyRow";
+
 const mockHandleAmountFromChange = jest.fn();
 const mockHandleRateFrom = jest.fn();
 

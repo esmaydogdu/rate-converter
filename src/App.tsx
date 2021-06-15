@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import {
-  InputGroup,
-  FormControl,
-  Dropdown,
-  DropdownButton,
-} from "react-bootstrap";
-import {
   changeAmountFrom,
   changeAmountTo,
   changeRateFrom,
@@ -51,9 +45,6 @@ const App = () => {
   };
 
   const handleAmountFromChange = (e: any) => {
-    if (e.target.value < 0) {
-      return;
-    }
     setSelectedRates(
       changeAmountFrom(ratesResponse, selectedRates, e.target.value)
     );
@@ -77,6 +68,7 @@ const App = () => {
   // Api call on the componentDidMount
   useEffect(() => {
     getRates(selectedRates.rateFrom);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isError) {
