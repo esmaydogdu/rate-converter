@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 // src/mocks/handlers.js
 import { rest } from "msw";
 

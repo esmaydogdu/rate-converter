@@ -15,8 +15,9 @@ import {
   State,
 } from "./utils/conversion";
 import { generateApiURL } from "./utils/api";
+import { CurrencyRow } from "./components/CurrencyRow";
 
-function App() {
+const App = () => {
   // All rates from API
   const [ratesResponse, setRatesResponse] = useState({} as Response);
 
@@ -84,62 +85,24 @@ function App() {
   }
   return (
     <div className="App">
-      <InputGroup>
-        <FormControl
-          value={selectedRates.amountFrom}
-          type="number"
-          onChange={handleAmountFromChange}
-        />
-        <DropdownButton
-          as={InputGroup.Append}
-          variant="outline-secondary"
-          title={selectedRates.rateFrom}
-          id="input-group-dropdown-2"
-        >
-          {Object.keys(ratesResponse.rates).map((rate) => {
-            if (rate === selectedRates.rateTo) return null;
-            return (
-              <Dropdown.Item
-                onClick={() => handleRateFrom(rate)}
-                active={selectedRates.rateFrom === rate}
-                key={rate}
-              >
-                {rate}
-              </Dropdown.Item>
-            );
-          })}
-        </DropdownButton>
-      </InputGroup>
-      <InputGroup>
-        <FormControl
-          value={selectedRates.amountTo}
-          type="number"
-          onChange={handleAmountToChange}
-          aria-describedby="basic-addon2"
-        />
-
-        <DropdownButton
-          as={InputGroup.Append}
-          variant="outline-secondary"
-          title={selectedRates.rateTo}
-          id="input-group-dropdown-2"
-        >
-          {Object.keys(ratesResponse.rates).map((rate) => {
-            if (rate === selectedRates.rateFrom) return null;
-            return (
-              <Dropdown.Item
-                onClick={() => handleRateTo(rate)}
-                active={selectedRates.rateTo === rate}
-                key={rate}
-              >
-                {rate}
-              </Dropdown.Item>
-            );
-          })}
-        </DropdownButton>
-      </InputGroup>
+      <CurrencyRow
+        amount={selectedRates.amountFrom}
+        handleAmountChange={handleAmountFromChange}
+        rate={selectedRates.rateFrom}
+        rates={ratesResponse.rates}
+        distinctRate={selectedRates.rateTo}
+        handleRateClick={handleRateFrom}
+      />
+      <CurrencyRow
+        amount={selectedRates.amountTo}
+        handleAmountChange={handleAmountToChange}
+        rates={ratesResponse.rates}
+        rate={selectedRates.rateTo}
+        distinctRate={selectedRates.rateFrom}
+        handleRateClick={handleRateTo}
+      />
     </div>
   );
-}
+};
 
 export default App;

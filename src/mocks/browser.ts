@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 // src/mocks/browser.js
 import { setupWorker } from "msw";
 import { handlers } from "./handlers";
