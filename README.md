@@ -1,9 +1,20 @@
-# Todos
-- [x] Prettier Loaders
-
-# Getting Started with Create React App
+# Case
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Added features below into CRA:
+
+- [x] Typescript
+- [x] React Bootstrap
+- [x] Mock Service Worker
+- [x] GitHub Actions { Install, Run unit tests, Build, Deploy }
+# Test Coverage
+![Test coverage](./assets/coverage.png)
+# Todos
+- [x] Prettier Loaders
+- [x] Skeleton Loader
+- [x] Handling the inputs in a smoother way (negative numbers, commas, slashed etc.)
+
 
 ## Available Scripts
 

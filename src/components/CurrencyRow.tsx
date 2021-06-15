@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from "react";
 import {
   InputGroup,
   FormControl,
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
+
 export const CurrencyRow = (props: any) => {
   return (
-    <InputGroup data-testid='currency-row'>
+    <InputGroup
+      className="p-2"
+      data-testid={`${props.testidPrefix}-currency-row`}
+    >
       <FormControl
-        data-testid="currency-row-input"
+        className="text-light bg-dark"
+        data-testid={`${props.testidPrefix}-currency-row-input`}
         value={props.amount}
         type="number"
+        min='0'
         onChange={props.handleAmountChange}
       />
       <DropdownButton
-        data-testid="currency-row-dropdown"
+        data-testid={`${props.testidPrefix}-currency-row-dropdown`}
         as={InputGroup.Append}
-        variant="outline-secondary"
+        variant="secondary"
         title={props.rate}
       >
         {Object.keys(props.rates).map((rate) => {
           if (rate === props.distinctRate) return null;
           return (
             <Dropdown.Item
-              data-testid="currency-row-dropdown-item"
+              data-testid={`${props.testidPrefix}-currency-row-dropdown-item`}
               onClick={() => props.handleRateClick(rate)}
               active={props.rate === rate}
               key={rate}

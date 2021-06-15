@@ -51,6 +51,9 @@ const App = () => {
   };
 
   const handleAmountFromChange = (e: any) => {
+    if (e.target.value < 0) {
+      return;
+    }
     setSelectedRates(
       changeAmountFrom(ratesResponse, selectedRates, e.target.value)
     );
@@ -77,15 +80,33 @@ const App = () => {
   }, []);
 
   if (isError) {
-    return <h1>Something went wrong!</h1>;
+    return (
+      <h1
+        className="d-flex vh-100 justify-content-center align-items-center bg-dark text-light"
+        data-testid="error-text"
+      >
+        Something went wrong!
+      </h1>
+    );
   }
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <h1
+        className="d-flex vh-100 justify-content-center align-items-center bg-dark text-light"
+        data-testid="loader-text"
+      >
+        Loading...
+      </h1>
+    );
   }
   return (
-    <div className="App">
+    <div
+      className="App d-flex vh-100 bg-dark align-items-center"
+      data-testid="app-container"
+    >
       <CurrencyRow
+        testidPrefix="from"
         amount={selectedRates.amountFrom}
         handleAmountChange={handleAmountFromChange}
         rate={selectedRates.rateFrom}
@@ -94,6 +115,7 @@ const App = () => {
         handleRateClick={handleRateFrom}
       />
       <CurrencyRow
+        testidPrefix="to"
         amount={selectedRates.amountTo}
         handleAmountChange={handleAmountToChange}
         rates={ratesResponse.rates}

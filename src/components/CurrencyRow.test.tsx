@@ -28,6 +28,7 @@ describe("[CurrencyRow.tsx]", () => {
 
     render(
       <CurrencyRow
+        testidPrefix="from"
         amount={selectedRates.amountFrom}
         handleAmountChange={mockHandleAmountFromChange}
         rate={selectedRates.rateFrom}
@@ -39,22 +40,22 @@ describe("[CurrencyRow.tsx]", () => {
   });
 
   it("should test the amount value on input", () => {
-    const input = screen.getByTestId("currency-row-input");
+    const input = screen.getByTestId("from-currency-row-input");
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("0");
   });
 
   it("should test if the dropdown rendered properly", async () => {
-    const dropdown = screen.getByTestId("currency-row-dropdown");
+    const dropdown = screen.getByTestId("from-currency-row-dropdown");
     expect(dropdown).toBeInTheDocument();
 
     const dropdownButton = screen.getByText("EUR");
     fireEvent.click(dropdownButton);
 
-    await waitFor(() => screen.getAllByTestId("currency-row-dropdown-item"));
-    expect(screen.getAllByTestId("currency-row-dropdown-item")).toHaveLength(4);
-    fireEvent.click(screen.getAllByTestId("currency-row-dropdown-item")[2]);
+    await waitFor(() => screen.getAllByTestId("from-currency-row-dropdown-item"));
+    expect(screen.getAllByTestId("from-currency-row-dropdown-item")).toHaveLength(4);
+    fireEvent.click(screen.getAllByTestId("from-currency-row-dropdown-item")[2]);
     expect(mockHandleRateFrom.mock.calls.length).toBe(1);
-    expect(mockHandleRateFrom).toHaveBeenCalledWith('USD');
+    expect(mockHandleRateFrom).toHaveBeenCalledWith("USD");
   });
 });
