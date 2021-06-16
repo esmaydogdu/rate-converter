@@ -8,6 +8,12 @@ Added features below into CRA:
 - [x] React Bootstrap
 - [x] Mock Service Worker
 - [x] GitHub Actions { Install, Run unit tests, Build, Deploy }
+
+# To Run This Project on Your Local
+- Get the API key from https://exchangeratesapi.io/documentation/ 
+- Place it in the .env 'token-here'
+
+
 # Test Coverage
 ![Test coverage](./assets/coverage.png)
 # Todos
