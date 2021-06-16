@@ -94,7 +94,7 @@ const App = () => {
   }
   return (
     <div
-      className="App d-flex vh-100 bg-dark align-items-center"
+      className="App d-flex vh-100 bg-dark align-items-center justify-content-center"
       data-testid="app-container"
     >
       <CurrencyRow

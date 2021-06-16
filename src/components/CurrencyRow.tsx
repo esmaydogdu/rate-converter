@@ -5,7 +5,7 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 import { Rates } from "../utils/conversion";
-
+import './CurrencyRow.scss'
 export type RowType = {
   testidPrefix: string;
   amount: number;
